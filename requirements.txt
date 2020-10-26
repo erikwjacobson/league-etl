@@ -1,0 +1,5 @@
+numpy
+pandas
+pyodbc
+bs4
+requests-html
