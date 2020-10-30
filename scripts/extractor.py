@@ -21,6 +21,6 @@ def extract(url):
     # Construct return value
     data = {}
     for link in links:
-        data[link.string] = pandas.read_csv(link['href'])
+        data[link.string] = pandas.read_csv(link['href'], low_memory=False)
 
     return data
