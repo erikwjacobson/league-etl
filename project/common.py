@@ -1,7 +1,6 @@
 # Housekeeping
 from scripts import extractor
 from datetime import datetime
-
 start = datetime.now()
 
 ##
@@ -12,17 +11,7 @@ print('Starting data extraction...')
 data = extractor.extract('https://oracleselixir.com/tools/downloads')
 extraction_time = datetime.now() - start
 
-print(f'Finished extraction: {extraction_time.seconds}s load time.')
-
-##
-# Transformation
-#
-trans_start = datetime.now()
-print('Starting data transformation...')
-
-# TODO Do the transformation
-trans_time = datetime.now() - trans_start
-print(f'Finished transformation: {trans_time.seconds}s load time.')
+print(f'Finished extraction: {extraction_time.seconds}s.')
 
 ##
 # Loading
@@ -31,10 +20,11 @@ load_start = datetime.now()
 print('Starting data loading...')
 
 # TODO Load the data
-loading_time = datetime.now() - load_start
 
-print(f'Finished loading: {loading_time.seconds}s load time.')
+
+loading_time = datetime.now() - load_start
+print(f'Finished loading: {loading_time.seconds}s.')
 
 # Final runtime
 total_time = datetime.now() - start
-print(f'Finished loading: {total_time.seconds}s load time.')
+print(f'Total ETL time: {total_time.seconds}s.')
