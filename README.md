@@ -18,10 +18,16 @@
     6. Extract insights using SQL
     
     7. Hook up PowerBI to the database to generate a dashboard for further insights
+    
+## Database Design
+
+* The database was designed as a T-SQL relational database. The ERD can be seen below.
+
+![LeagueETLERD](LeagueETLERD.png)
 
 # Installation
 
 - `pip install -r requirements.txt`
-- `cp config.example config.json`
-- Run the database script `database.SQL`
+- `cp config.example config.json`, and fill in with database credentials
+- Run the database script `database.SQL` in a T-SQL Server database
 - To run the ETL process start-to-finish, run the `common.py` file
