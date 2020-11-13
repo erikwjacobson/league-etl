@@ -3,11 +3,11 @@ from bs4 import BeautifulSoup
 import pandas
 import requests_html
 
+
 ##
-# Extractor function that acquires data from a OraclesElixer.com
+# Extractor function that acquires data from a OraclesElixir.com
 #
 def extract(url):
-
     # Acquire the data
     session = requests_html.HTMLSession()  # Using requests-html to render javascript
     r = session.get(url)
