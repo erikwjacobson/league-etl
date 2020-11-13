@@ -16,8 +16,7 @@ CREATE TABLE player (
 CREATE TABLE league (
     league_id int IDENTITY (1,1) NOT NULL,
     PRIMARY KEY (league_id),
-    league_name varchar(255) NOT NULL,
-    location varchar(255) NOT NULL
+    league_name varchar(255) NOT NULL
 );
 
 CREATE TABLE team (
@@ -118,6 +117,6 @@ CREATE TABLE game_ban
     game_ban_id int IDENTITY (1,1) NOT NULL,
     PRIMARY KEY (game_ban_id),
     champion_id int NOT NULL FOREIGN KEY REFERENCES champion(champion_id), --FK
-    ban_side varchar(10) NOT NULL CHECK (pick_side IN('blue', 'red')),
+    ban_side varchar(10) NOT NULL CHECK (ban_side IN('blue', 'red')),
     ban_order varchar(255) NOT NULL
 );
