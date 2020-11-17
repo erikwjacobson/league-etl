@@ -27,25 +27,18 @@ for key in all_data:
     dataset = all_data[key]
 
     ##
-    # Verification / Cleaning
-    #
-    clean_start = datetime.now()
-    print(f'Starting data verification and cleaning for {key}...')
-
-    cleaned = general_verification.verify(dataset)
-
-    clean_end = datetime.now() - clean_start
-
-    ##
     # Loading
     #
     load_start = datetime.now()
     print(f'Starting data loading for {key}...')
+    print()
 
-    general_loader.load_data(dataset)  # Load all data
+    general_loader.load(dataset)  # Load all data
 
-    loading_time = datetime.now() - load_start
-    print(f'Finished loading: {loading_time.seconds}s.')
+    print()
+
+loading_time = datetime.now() - load_start
+print(f'Finished loading: {loading_time.seconds}s.')
 
 # Final runtime
 total_time = datetime.now() - start
