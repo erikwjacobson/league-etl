@@ -12,4 +12,6 @@ def verify(data):
     players = cursor.fetchall()
     verified = data[~data['player'].isin(players)]['player'].tolist()
 
+    connection.close()
+
     return verified
