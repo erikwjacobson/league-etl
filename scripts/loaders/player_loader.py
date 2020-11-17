@@ -4,14 +4,14 @@ import pandas
 from transforms import player_transform
 
 
-def load_player(data, cursor):
+def load(data, cursor):
     # Get transformed data
-    player_data = player_transform.player_transformed(data)
+    player_data = player_transform.transform(data)
 
     # Load using pyodbc
-    cursor.fast_executemany = True
-    player_data = list((item,) for item in player_data)
-    cursor.executemany(f'INSERT INTO player VALUES (?)', player_data)
+    if len(player_data) != 0:
+        player_data = list((item,) for item in player_data)
+        cursor.executemany(f'INSERT INTO player VALUES (?)', player_data)
 
     # Next table load occurs
     print('Executed inserts for player table.')

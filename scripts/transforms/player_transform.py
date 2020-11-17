@@ -3,7 +3,7 @@ import pandas
 from verification import player_verification
 
 
-def player_transformed(data):
+def transform(data):
     # Select relevant columns
     columns = ['player']
     only_players = data[data['position'] != 'team'][columns]
