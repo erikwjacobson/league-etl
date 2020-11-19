@@ -3,3 +3,5 @@
 venv/
 config.json
 *.csv
+.ipynb_checkpoints/
+*.ipynb
