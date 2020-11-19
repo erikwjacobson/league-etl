@@ -11,5 +11,4 @@ def load(data, cursor):
         league_data = list((item,) for item in league_data)
         cursor.executemany(f'INSERT INTO league VALUES (?)', league_data)
 
-    # Next table load occurs
-    print('Executed inserts for league table.')
+        print('Executed inserts for league table.')

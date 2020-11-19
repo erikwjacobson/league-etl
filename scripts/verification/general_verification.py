@@ -17,7 +17,7 @@ def verify(data):
 
     cursor.execute('SELECT match_id from verification;')
     matches = list(item.match_id for item in cursor.fetchall())
-    verified = data[~data['gameid'].isin(matches)].tolist()
+    verified = data[~data['gameid'].isin(matches)]
 
     connection.close()
 

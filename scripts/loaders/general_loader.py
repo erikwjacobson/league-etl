@@ -3,6 +3,7 @@ import pyodbc
 import pandas
 from loaders import player_loader
 from loaders import league_loader
+from loaders import team_loader
 from verification import general_verification
 from project import database_connection
 
@@ -16,7 +17,7 @@ def load(data):
     # Establish connection
     connection = database_connection.connect(autocommit=False)
     cursor = connection.cursor()
-    cursor.fast_executemany = True
+    cursor.fast_executemany = False
 
     # Run general verifications on the data
     verified_data = general_verification.verify(data)
@@ -24,6 +25,7 @@ def load(data):
     # Call each individual loader
     player_loader.load(verified_data, cursor)
     league_loader.load(verified_data, cursor)
+    team_loader.load(verified_data, cursor)
 
     # Execute
     connection.commit()
