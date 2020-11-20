@@ -16,9 +16,12 @@ def transform(data):
     grouped = grouped.sort_values('size', ascending=False).drop_duplicates(subset=['team'])
     grouped = grouped.drop(columns=['size'])
 
+    # Need to replace special characters that exist in some of the team names from some EU countries.
+    grouped['team'] = grouped['team'].str.normalize('NFD').str.encode('ascii', errors='ignore').str.decode('utf-8')
+
     # Getting league_ids from the database
     connection = database_connection.connect()
-    league_ids = pandas.read_sql('SELECT league_id, league_name FROM league', connection)
+    league_ids = pandas.read_sql_query('SELECT league_id, league_name FROM league', connection)
     to_verify = grouped.merge(league_ids, left_on='league', right_on='league_name')
     connection.close()
 
