@@ -7,11 +7,6 @@ from loaders import team_loader
 from verification import general_verification
 from project import database_connection
 
-##
-# General loader that takes in a dataframe and loads the data into the database
-# @param data - pandas dataframe that contains the loadable data
-#
-
 
 def load(data):
     # Establish connection
@@ -24,11 +19,16 @@ def load(data):
 
     # Call each individual loader
     player_loader.load(verified_data, cursor)
+    connection.commit()
+
     league_loader.load(verified_data, cursor)
+    connection.commit()
+
     team_loader.load(verified_data, cursor)
+    connection.commit()
 
     # Execute
-    connection.commit()
+
     connection.close()
 
     print('General loader finished loading.')
