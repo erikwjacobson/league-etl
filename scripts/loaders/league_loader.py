@@ -12,3 +12,6 @@ def load(data, cursor):
         cursor.executemany(f'INSERT INTO league VALUES (?)', league_data)
 
         print('Executed inserts for league table.')
+
+    else:
+        print('No new leagues were inserted to the league table.')

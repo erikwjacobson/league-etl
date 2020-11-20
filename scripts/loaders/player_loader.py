@@ -13,5 +13,7 @@ def load(data, cursor):
         player_data = list((item,) for item in player_data)
         cursor.executemany(f'INSERT INTO player VALUES (?)', player_data)
 
-    # Next table load occurs
-    print('Executed inserts for player table.')
+        print('Executed inserts for player table.')
+
+    else:
+        print('No new players were inserted to the player table.')

@@ -12,7 +12,6 @@ def load(data):
     # Establish connection
     connection = database_connection.connect(autocommit=False)
     cursor = connection.cursor()
-    cursor.fast_executemany = False
 
     # Run general verifications on the data
     verified_data = general_verification.verify(data)
@@ -27,8 +26,7 @@ def load(data):
     team_loader.load(verified_data, cursor)
     connection.commit()
 
-    # Execute
-
+    # Close the connection
     connection.close()
 
     print('General loader finished loading.')
