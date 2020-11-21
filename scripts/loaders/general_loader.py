@@ -1,9 +1,8 @@
 # Housekeeping
-import pyodbc
-import pandas
 from loaders import player_loader
 from loaders import league_loader
 from loaders import team_loader
+from loaders import roster_loader
 from verification import general_verification
 from project import database_connection
 
@@ -24,6 +23,9 @@ def load(data):
     connection.commit()
 
     team_loader.load(verified_data, cursor)
+    connection.commit()
+
+    roster_loader.load(verified_data, cursor)
     connection.commit()
 
     # Close the connection
