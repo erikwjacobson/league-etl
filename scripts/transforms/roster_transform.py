@@ -3,6 +3,7 @@ import pandas
 from verification import roster_verification
 from project import database_connection
 
+
 def transform(data):
     # Perform pivot transformation
     data = data[data['position'] != 'team']
@@ -19,6 +20,7 @@ def transform(data):
     connection = database_connection.connect()
     player_ids = pandas.read_sql_query('SELECT player_id, player_name FROM player', connection)
     team_ids = pandas.read_sql_query('SELECT team_id, team_name FROM team', connection)
+    connection.close()
 
     # Replace names with ids in the table
     team_id_dict = team_ids.set_index('team_name').to_dict()['team_id']
