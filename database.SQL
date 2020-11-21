@@ -35,8 +35,6 @@ CREATE TABLE roster (
     mid_player_id int NOT NULL FOREIGN KEY REFERENCES player(player_id), --FK
     bot_player_id int NOT NULL FOREIGN KEY REFERENCES player(player_id), --FK
     sup_player_id int NOT NULL FOREIGN KEY REFERENCES player(player_id), --FK
-    start_date date,
-    end_date date,
 );
 
 CREATE TABLE patch (
